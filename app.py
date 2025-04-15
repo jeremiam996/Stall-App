@@ -34,7 +34,6 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-
 DB = "stall_app_final_full.db"
 
 def get_connection():
