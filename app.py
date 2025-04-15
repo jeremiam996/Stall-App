@@ -7,7 +7,7 @@ st.set_page_config(page_title="Stall App", layout="centered")
 
 st.markdown("""
     <style>
-        .stApp { background-color: #b2d8b2; }
+        .stApp { background-color: #006400; }  /* Dunkleres Grün für besseren Kontrast */
         .highlight-event {
             border: 2px solid gold;
             padding: 4px;
@@ -33,6 +33,7 @@ st.markdown("""
         }
     </style>
 """, unsafe_allow_html=True)
+
 
 DB = "stall_app_final_full.db"
 
