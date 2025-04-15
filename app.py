@@ -118,20 +118,20 @@ else:
     def add_duty(user_id, duty_date):
     # Überprüfe, ob der Tag bereits vergeben ist
         with get_connection() as conn:
-        cur = conn.cursor()
-        cur.execute("SELECT * FROM muck_duties WHERE date=?", (duty_date,))
-        existing_entry = cur.fetchone()
+            cur = conn.cursor()
+            cur.execute("SELECT * FROM muck_duties WHERE date=?", (duty_date,))
+            existing_entry = cur.fetchone()
 
         if existing_entry:
         # Zeige eine Fehlermeldung an, wenn der Tag bereits gebucht ist
-        st.error(f"❌ Der Tag {duty_date} ist bereits gebucht!")
+            st.error(f"❌ Der Tag {duty_date} ist bereits gebucht!")
         else:
         # Wenn der Tag frei ist, füge den Eintrag hinzu
             with get_connection() as conn:
-            cur = conn.cursor()
-            cur.execute("INSERT INTO muck_duties (user_id, date) VALUES (?, ?)", (user_id, duty_date))
-            conn.commit()
-            st.success(f"✅ Mistdienst für {duty_date} erfolgreich eingetragen!")
+                cur = conn.cursor()
+                cur.execute("INSERT INTO muck_duties (user_id, date) VALUES (?, ?)", (user_id, duty_date))
+                conn.commit()
+                st.success(f"✅ Mistdienst für {duty_date} erfolgreich eingetragen!")
 
 
     def delete_duty(entry_id):
